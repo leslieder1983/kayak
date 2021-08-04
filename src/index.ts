@@ -102,7 +102,7 @@ export default function createStore(reducer: Reducer | object) {
 
 
     }
-    function getState(original: boolean = true) {
+    function getState() {
         if (isDispatching) {
             throw new Error(
                 'You may not call store.getState() while the reducer is executing. ' +
@@ -114,7 +114,7 @@ export default function createStore(reducer: Reducer | object) {
         /**
          * get clone object
          */
-        const res: any = original ? clone(data, 'currentState') : data;
+        const res: any = combine ? clone(data, 'currentState') : clone(data);
 
         return combine ? res : res['currentState'];
     }
@@ -136,10 +136,14 @@ export default function createStore(reducer: Reducer | object) {
         
         return store;
     }
+    function update(){
+        isDispatching=false;
+    }
     /**
      *   proxy Initialize data
      */
-    proxy = new Model(data);
+    
+    proxy = new Model(data,update);
     /**
      * state get default data
      */

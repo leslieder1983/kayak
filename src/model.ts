@@ -2,7 +2,9 @@ import Watcher from "./watcher";
 
 export default class Model {
 
-    constructor(data: object) {
+    constructor(data: object,fn:Function) {
+        console.log(this);
+        
         let proxy = new Proxy(data, {
             set: (src: any, key: string, value: any, receiver: any) => {
 
@@ -19,7 +21,7 @@ export default class Model {
                 ;
 
                 if (key != '$watch') {
-                    Watcher.update(key);
+                    Watcher.update(key,fn);
                 }
 
                 return Reflect.set(src, key, value, receiver);
@@ -33,7 +35,7 @@ export default class Model {
                 }
                 if (typeof res === 'object' && res !== null) {
                     if (!src[key].$watch) {
-                        let p = new Model(res);
+                        let p = new Model(res,fn);
                         return p;
                     }
                 }

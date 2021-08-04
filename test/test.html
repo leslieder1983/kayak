@@ -66,8 +66,11 @@
         });
         let un = store.subscribe(() => {
             console.log('这是订阅后的subscribe');
+            let data = store.getState();
+        console.log(data);
         });
         let data = store.getState();
+        console.log(data);
         store.replace(del);
         document.getElementById('btn').addEventListener('click', () => {
             store.dispatch({

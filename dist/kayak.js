@@ -14,7 +14,7 @@ var kayak = (function () {
       static watchers = [];
       static keyMap = new Map();
       static isExec = false;
-      static update(key) {
+      static update(key, fn) {
           if (this.isExec) {
               return;
           }
@@ -24,6 +24,7 @@ var kayak = (function () {
               extra = Watcher.keyMap.get(key) || [];
           }
           let watchers = [...Watcher.watchers, ...extra];
+          fn();
           watchers?.forEach(fn => fn());
           this.isExec = false;
       }
@@ -45,7 +46,8 @@ var kayak = (function () {
   }
 
   class Model {
-      constructor(data) {
+      constructor(data, fn) {
+          console.log(this);
           let proxy = new Proxy(data, {
               set: (src, key, value, receiver) => {
                   //值未变,proxy 不处理
@@ -58,7 +60,7 @@ var kayak = (function () {
                       return true;
                   }
                   if (key != '$watch') {
-                      Watcher.update(key);
+                      Watcher.update(key, fn);
                   }
                   return Reflect.set(src, key, value, receiver);
               },
@@ -70,7 +72,7 @@ var kayak = (function () {
                   }
                   if (typeof res === 'object' && res !== null) {
                       if (!src[key].$watch) {
-                          let p = new Model(res);
+                          let p = new Model(res, fn);
                           return p;
                       }
                   }
@@ -267,7 +269,7 @@ var kayak = (function () {
               isSubscribed = false;
           };
       }
-      function getState(original = true) {
+      function getState() {
           if (isDispatching) {
               throw new Error('You may not call store.getState() while the reducer is executing. ' +
                   'The reducer has already received the state as an argument. ' +
@@ -277,7 +279,7 @@ var kayak = (function () {
           /**
            * get clone object
            */
-          const res = original ? clone(data, 'currentState') : data;
+          const res = combine ? clone(data, 'currentState') : clone(data);
           return combine ? res : res['currentState'];
       }
       /**
@@ -293,10 +295,13 @@ var kayak = (function () {
           dispatch({ type: ActionTypes.REPLACE });
           return store;
       }
+      function update() {
+          isDispatching = false;
+      }
       /**
        *   proxy Initialize data
        */
-      proxy = new Model(data);
+      proxy = new Model(data, update);
       /**
        * state get default data
        */

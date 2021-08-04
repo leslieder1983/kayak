@@ -8,6 +8,6 @@ import { Reducer } from './types/reducer';
 export default function createStore(reducer: Reducer | object): {
     dispatch: (action: Action) => void;
     subscribe: (listener: () => void, key?: string | undefined) => () => void;
-    getState: (original?: boolean) => any;
+    getState: () => any;
     replace: (newReducer: Reducer) => any;
 };

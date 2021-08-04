@@ -1,3 +1,3 @@
 export default class Model {
-    constructor(data: object);
+    constructor(data: object, fn: Function);
 }
