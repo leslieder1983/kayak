@@ -3,5 +3,5 @@ export default  interface Action<Type = any>{
 }
 export interface AnyAction extends Action {
     // Allows any extra properties to be defined in an action.
-    [extraProps: string]: any
+     [extraProps: string]: any
   }

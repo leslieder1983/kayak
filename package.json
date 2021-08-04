@@ -1,6 +1,6 @@
 {
   "name": "kayaks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": " a state management pattern developed  for JavaScript apps",
   "main": "src/index.ts",
   "scripts": {

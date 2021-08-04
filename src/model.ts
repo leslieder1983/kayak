@@ -3,7 +3,6 @@ import Watcher from "./watcher";
 export default class Model {
 
     constructor(data: object,fn:Function) {
-        console.log(this);
         
         let proxy = new Proxy(data, {
             set: (src: any, key: string, value: any, receiver: any) => {
