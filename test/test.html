@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../dist/kayak.js"></script>
+    <title>kayak</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script>
+        const store = kayak({
+            add,
+            del,
+            arr
+        });
+        // const store = kayak(
+        //     add
+        //     );
+        function add(pre = 0, action) {
+            const {
+                type,
+                data
+            } = action;
+            switch (type) {
+                case 'add':
+                    return pre + 1;
+                default:
+                    return pre;
+            }
+        }
+
+        function del(pre = {}, action) {
+            const {
+                type,
+                data
+            } = action;
+            switch (type) {
+                case 'add':
+                    
+                    return {
+                        name:Math.random()*10|0
+                    };
+                default:
+                    return pre;
+            }
+        }
+        function arr(pre=[],action){
+            const {
+                type,
+                data
+            } = action;
+            switch (type) {
+                case 'add':
+                    pre.push(1);
+                    return pre;
+                default:
+                    return pre;
+            }
+        }
+        store.dispatch({
+            type: 'add',
+            data: 1
+        });
+        let un = store.subscribe(() => {
+            console.log('这是订阅后的subscribe');
+        },'add');
+        let data=store.getState();
+        
+        document.getElementById('btn').addEventListener('click', () => {
+            store.dispatch({
+                type: 'add',
+                data: 123
+            })
+            // un();
+        })
+        setTimeout(() => {
+            un();
+        }, 5000);
+    </script>
+</body>
+
+</html>

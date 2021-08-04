@@ -1,0 +1,31 @@
+{
+  "name": "kayak",
+  "version": "1.0.0",
+  "description": "Predictable state container for JavaScript apps",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [
+    "nodom",
+    "state",
+    "reducer",
+    "predictable",
+    "functional",
+    "immutable",
+    "hot",
+    "live",
+    "replay",
+    "flux",
+    "elm"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "rollup": "^2.48.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.2.4"
+  },
+  "author": "kyleslie",
+  "license": "ISC"
+}
