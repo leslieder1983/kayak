@@ -27,5 +27,6 @@
     "typescript": "^4.2.4"
   },
   "author": "kyleslie",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": "git@github.com:leslieder1983/kayak.git"
 }

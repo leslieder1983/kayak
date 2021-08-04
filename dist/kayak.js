@@ -25,7 +25,6 @@ var kayak = (function () {
           }
           let watchers = [...Watcher.watchers, ...extra];
           watchers?.forEach(fn => fn());
-          console.log('我执行了update', key);
           this.isExec = false;
       }
       static remove(fn, key) {
@@ -290,6 +289,7 @@ var kayak = (function () {
           if (typeof newReducer !== 'function') {
               throw new Error(`Expected the nextReducer to be a function. Instead, received: '${typeof newReducer}`);
           }
+          currentReducer = newReducer;
           dispatch({ type: ActionTypes.REPLACE });
           return store;
       }

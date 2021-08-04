@@ -12,14 +12,12 @@
 <body>
     <button id="btn">点击</button>
     <script>
-        const store = kayak({
-            add,
-            del,
-            arr
-        });
-        // const store = kayak(
-        //     add
-        //     );
+        // const store = kayak({
+        //     add,
+        //     del,
+        //     arr
+        // });
+        const store = kayak(add);
         function add(pre = 0, action) {
             const {
                 type,
@@ -34,21 +32,22 @@
         }
 
         function del(pre = {}, action) {
+            console.log('del',action.type);
             const {
                 type,
                 data
             } = action;
             switch (type) {
-                case 'add':
-                    
+                case 'del':
                     return {
-                        name:Math.random()*10|0
+                        name: Math.random() * 10 | 0
                     };
                 default:
                     return pre;
             }
         }
-        function arr(pre=[],action){
+
+        function arr(pre = [], action) {
             const {
                 type,
                 data
@@ -67,12 +66,12 @@
         });
         let un = store.subscribe(() => {
             console.log('这是订阅后的subscribe');
-        },'add');
-        let data=store.getState();
-        
+        });
+        let data = store.getState();
+        store.replace(del);
         document.getElementById('btn').addEventListener('click', () => {
             store.dispatch({
-                type: 'add',
+                type: 'del',
                 data: 123
             })
             // un();

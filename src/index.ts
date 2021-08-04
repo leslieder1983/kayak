@@ -131,7 +131,9 @@ export default function createStore(reducer: Reducer | object) {
                 }`
             )
         }
+        currentReducer =newReducer;
         dispatch({ type: ActionTypes.REPLACE } as Action);
+        
         return store;
     }
     /**

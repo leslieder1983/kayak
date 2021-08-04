@@ -16,7 +16,6 @@ export default class Watcher {
         
         let watchers:Array<Function>=[...Watcher.watchers,...extra];
         watchers?.forEach(fn => fn());
-        console.log('我执行了update',key);
         
         this.isExec=false;
     }
