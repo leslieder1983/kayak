@@ -64,7 +64,8 @@ kayak来帮助创建你的store,保证你的“store”唯一。store基本上�
     当你需要监听状态值改变时,订阅即可：
 ```js
      const unScribe = store.subscribe(() => {
-            console.log('这是订阅后执行的回调函数，你可以在这里进行组件/模块更新的操作');
+            console.log('这是订阅后执行的回调函数，
+             你可以在这里进行组件/模块更新的操作');
         });
 
 ```
@@ -72,7 +73,8 @@ kayak来帮助创建你的store,保证你的“store”唯一。store基本上�
 ```js
     unScribe()
 ```
-    subscribe第二个参数来对单个属性进行订阅，如果传入第二个参数，只有store的该字段数据改变后才执行回调。
+    subscribe第二个参数来对单个属性进行订阅，如果传入第二个参数，  
+    只有store的该字段数据改变后才执行回调。
 ```js
     store.subscribe(() => {
             console.log('这是只订阅add字段的更新，执行的回调函数');
@@ -80,7 +82,8 @@ kayak来帮助创建你的store,保证你的“store”唯一。store基本上�
 ```
 
     当你需要获取store存储的数据时，调用getState即可。
-    不要尝试直接修改数据，改变 store 中的状态的唯一途径就是store.dispatch()。这样使得我们可以方便地跟踪每一个状态的变化。
+    不要尝试直接修改数据，改变 store 中的状态的唯一途径就是store.dispatch()。  
+    这样使得我们可以方便地跟踪每一个状态的变化。
 ```js
     let data=store.getState();
 ```
