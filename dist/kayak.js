@@ -14,7 +14,7 @@ var kayak = (function () {
       static watchers = [];
       static keyMap = new Map();
       static isExec = false;
-      static update(key, fn) {
+      static async update(key, fn) {
           if (this.isExec) {
               return;
           }
@@ -24,7 +24,7 @@ var kayak = (function () {
               extra = Watcher.keyMap.get(key) || [];
           }
           let watchers = [...Watcher.watchers, ...extra];
-          fn();
+          await fn();
           watchers?.forEach(fn => fn());
           this.isExec = false;
       }
@@ -47,7 +47,6 @@ var kayak = (function () {
 
   class Model {
       constructor(data, fn) {
-          console.log(this);
           let proxy = new Proxy(data, {
               set: (src, key, value, receiver) => {
                   //值未变,proxy 不处理

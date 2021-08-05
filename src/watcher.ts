@@ -4,7 +4,7 @@ export default class Watcher {
     static keyMap: Map<string, Array<Function>> = new Map();
     static isExec: boolean = false;
   
-    public static update(key: string,fn:Function): void {
+    public static async update(key: string,fn:Function): Promise<void> {
         if (this.isExec) {
             return;
         }
@@ -15,7 +15,7 @@ export default class Watcher {
         }
         
         let watchers:Array<Function>=[...Watcher.watchers,...extra];
-        fn();
+       await fn();
         watchers?.forEach(fn => fn());
         
         this.isExec=false;
