@@ -1,8 +1,8 @@
 {
   "name": "kayaks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": " a state management pattern developed  for JavaScript apps",
-  "main": "src/index.ts",
+  "main": "./src/index.ts",
   "scripts": {
     "build": "rollup -c"
   },
