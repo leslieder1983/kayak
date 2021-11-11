@@ -5874,5 +5874,5 @@ EventManager.regist('swiperight', EventManager.get('swipe'));
 EventManager.regist('swipeup', EventManager.get('swipe'));
 EventManager.regist('swipedown', EventManager.get('swipe'));
 
-export { Compiler, CssManager, DiffTool, Directive, DirectiveElement, DirectiveElementManager, DirectiveManager, DirectiveType, EventManager, Expression, GlobalCache, Model, ModelManager, Module, ModuleFactory, NCache, NError, NEvent, NFactory, NodomMessage, NodomMessage_en, NodomMessage_zh, Renderer, Route, Router, Scheduler, Util, VirtualDom, createDirective, createRoute, nodom, registModule, request };
+// export { Compiler, CssManager, DiffTool, Directive, DirectiveElement, DirectiveElementManager, DirectiveManager, DirectiveType, EventManager, Expression, GlobalCache, Model, ModelManager, Module, ModuleFactory, NCache, NError, NEvent, NFactory, NodomMessage, NodomMessage_en, NodomMessage_zh, Renderer, Route, Router, Scheduler, Util, VirtualDom, createDirective, createRoute, nodom, registModule, request };
 //# sourceMappingURL=nodom.js.map

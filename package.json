@@ -1,8 +1,10 @@
 {
   "name": "kayaks",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": " a state management pattern developed  for JavaScript apps",
-  "main": "./src/index.ts",
+  "main": "./dist/kayaks.cjs.js",
+  "module": "./dist/kayaks.esm.js",
+  "browser": "./dist/kayaks.browser.js",
   "scripts": {
     "build": "rollup -c"
   },

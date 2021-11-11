@@ -2,18 +2,28 @@ import commonjs from "@rollup/plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import path from "path";
 import ts from "rollup-plugin-typescript2";
+import pkg from './package.json';
 export default {
 	input: path.join(__dirname, "/src/index.ts"),
-	output: {
-		name: "kayak",
-		file: path.resolve("dist/kayak.js"), // 输出的文件路径
-		format: "iife", // 打包格式 umd iife esm 比较主流
-		sourcemap: true, //生成映射文件
-	},
-	// external: ["nodom", path.resolve("./node_modules/nodom")],
-	// globals: {
-	// 	ndoom: "nodom",
-	// },
+	output:[
+		{
+			exports:'default',
+			file: pkg.main,
+			format: 'cjs',
+			name: 'kayak',
+		  },
+		  {
+			file: pkg.module,
+			format: 'esm',
+			name: 'kayak',
+			sourcemap: true, 
+		  },
+		  {
+			file: pkg.browser,
+			format: 'umd',
+			name: 'kayak',
+		  },
+	],
 	plugins: [
 		nodeResolve(),
 		commonjs({

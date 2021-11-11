@@ -5,18 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../dist/kayak.js"></script>
+    <script src="../dist/kayaks.browser.js"></script>
+    <script src="../nodom/nodom.js"></script>
     <title>kayak</title>
 </head>
 
 <body>
-    <button id="btn">click</button>
+    <div id="btn">click</div>
+   
     <script>
-        // const store = kayak({
-        //     add,
-        //     del,
-        //     arr
-        // });
+   
         const store = kayak(add);
         function add(pre = 0, action) {
             const {
